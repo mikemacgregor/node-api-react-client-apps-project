@@ -24,11 +24,12 @@ const Navigation = () => {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand>MOFO Gaming</Navbar.Brand>
+      <Navbar.Brand>Draft *Anything?* App</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Link to="/" component={NavLink}>Home</Link>
+          <Link to="/drafts" component={NavLink}>Draft</Link>
 
           {user && user.token ? (
             <>
