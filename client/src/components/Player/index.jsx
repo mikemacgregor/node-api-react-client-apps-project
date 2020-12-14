@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Card } from 'react-bootstrap';
+import Header from '../shared/Header';
 import axios from 'axios';
 
 const Player = () => {
@@ -13,6 +14,9 @@ const Player = () => {
 
     return (
         <>
+            <Header title="All Our Players" children="hello">
+
+            </Header>
             {players.map((player, i) => (
             <Card>
                 <div className="card-header bg-primary">

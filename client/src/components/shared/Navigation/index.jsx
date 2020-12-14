@@ -29,7 +29,8 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Link to="/" component={NavLink}>Home</Link>
-          <Link to="/drafts" component={NavLink}>Draft</Link>
+          <Link to="/drafts" component={NavLink}>Drafts</Link>
+          <Link to="/players" component={NavLink}>Players</Link>
 
           {user && user.token ? (
             <>
