@@ -1,0 +1,16 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/journal/bootstrap.min.css");
+
+/* force mobile-always look */
+body {
+    max-width: 360px;
+    margin: auto;
+    background-color: #666;
+}
+
+#root {
+    background-color: #fff;
+}
+
+footer {
+    padding: 6px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
-import { Container, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Header from '../shared/Header';
 
 const Users = () => {
@@ -36,25 +36,23 @@ const Users = () => {
           </p>
         </Header>
 
-        <Container className="my-3">
-          <Table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Email</td>
-              </tr>
-            </thead>
+        <Table className="table-responsive">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Email</td>
+            </tr>
+          </thead>
 
-            <tbody>
-              {users.map(({name, email}, i) => (
-                <tr>
-                  <td>{name}</td>
-                  <td>{email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Container>
+          <tbody>
+            {users.map(({name, email}, i) => (
+              <tr>
+                <td>{name}</td>
+                <td>{email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </>
     ) : null
   );
