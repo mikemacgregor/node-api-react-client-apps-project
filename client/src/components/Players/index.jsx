@@ -36,7 +36,7 @@ const Player = () => {
             <Row>
                 <Col>
                 {players.map((player, i) => (
-                    <Card>
+                    <Card key={player._id}>
                         <div className="card-header bg-primary">
                         <div className="text-white">
                             Player card for {player.firstName} {player.lastName}
