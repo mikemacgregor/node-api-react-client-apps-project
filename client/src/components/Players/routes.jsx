@@ -4,6 +4,7 @@ import { UserContext } from '../Authentication/UserProvider';
 
 import NoDice from './nodice';
 import Index from './index';
+import Show from './Show';
 import Edit from './Edit';
 
 const Routes = () => {
@@ -14,6 +15,7 @@ const Routes = () => {
         {user && user.token ? (
           <>
             <Route exact path="/players" component={Index}/>
+            <Route exact path="/players/:id" component={Show}/>
             {/* <Route exact path="/profile" component={Show}/> */}
             <Route exact path="/players/edit" component={Edit}/>
           </>

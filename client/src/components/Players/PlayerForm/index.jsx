@@ -5,9 +5,13 @@ import Axios from 'axios';
 import { PlayerContext } from '../PlayerProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
+
+  const { id } = useParams();
+    // console.log(id);
+
   const { globalStore } = useContext(GlobalStoreContext);    
   const { player, setPlayer } = useContext(PlayerContext);
   const { setNotification } = useContext(NotificationContext);
@@ -56,7 +60,7 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   return (
     redirect ? (
-      <Redirect to="/players"/>
+      <Redirect to={`/players/${id}`}/>
     ) : (
       <Form onSubmit={handleSubmit}>
         <p>

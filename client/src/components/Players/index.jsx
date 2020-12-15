@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
@@ -44,6 +45,12 @@ const Player = () => {
                         </div>
                         <div className="card-body">
                             {player.position} {player.team}
+                            <div>
+                            <Link to={`/players/${player._id}`}>player page</Link>
+                            </div>
+                            <div>
+                                <Link to={`/players/edit/${player._id}`}>edit player</Link>
+                            </div>
                         </div>
                     </Card>
                 ))}
