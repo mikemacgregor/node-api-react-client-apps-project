@@ -17,7 +17,7 @@ const Routes = () => {
             <Route exact path="/players" component={Index}/>
             <Route exact path="/players/:id" component={Show}/>
             {/* <Route exact path="/profile" component={Show}/> */}
-            <Route exact path="/players/edit" component={Edit}/>
+            <Route exact path="/players/edit/:id" component={Edit}/>
           </>
         ) : (
           <>

@@ -50,7 +50,7 @@ exports.update = async (req, res, next) => {
             espnId
         });
 
-        res.status(200).json({ message: "Quote updated successfully", quote: qt });
+        res.status(200).json({ message: "Player updated", quote: qt });
 
     } catch (error) {
         next(error);

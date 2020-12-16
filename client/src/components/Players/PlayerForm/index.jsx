@@ -1,25 +1,23 @@
-import React from 'react';
-import { useState, useContext } from 'react';
+import React, { useState, useContext }  from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Axios from 'axios';
-import { PlayerContext } from '../PlayerProvider';
+import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
-  const { id } = useParams();
-    // console.log(id);
-
-  const { globalStore } = useContext(GlobalStoreContext);    
-  const { player, setPlayer } = useContext(PlayerContext);
+  const { globalStore } = useContext(GlobalStoreContext);
+  const { user, setPlayer } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
 
   const [inputs, setInputs] = useState({
     ...preloadData
   });
   const [redirect, setRedirect] = useState(false);
+
+  console.log(inputs);
   
   const handleChange = event => {
     event.persist();
@@ -32,10 +30,10 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    if (inputs && inputs.email) {
-      Axios.post(`${globalStore.REACT_APP_ENDPOINT}/${endpoint}`, { // add /:id for edit
+    if (inputs) {
+      Axios.post(`${globalStore.REACT_APP_ENDPOINT}/players/update`, {
         ...inputs,
-        _id: player._id
+        secret_token: (user && user.token)
       })
       .then(({ data }) => {
         if (data && data.token) setPlayer(data);
@@ -60,7 +58,7 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   return (
     redirect ? (
-      <Redirect to={`/players/${id}`}/>
+      <Redirect to={`/players/${inputs.id}`}/>
     ) : (
       <Form onSubmit={handleSubmit}>
         <p>

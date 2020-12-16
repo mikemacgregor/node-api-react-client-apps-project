@@ -1,13 +1,24 @@
+import React, { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Axios from 'axios';
-import React, { useState, useContext } from 'react';
-import { useEffect } from 'react';
+
 import { UserContext } from '../../Authentication/UserProvider';
+import { GlobalStoreContext } from '../../shared/Globals';
+import { NotificationContext } from '../../shared/Notifications';
+
 import { Container } from 'react-bootstrap';
 import Header from '../../shared/Header';
 import PlayerForm from '../PlayerForm';
 
 const Edit = () => {
+  
+  const { id } = useParams();
+    // console.log(id);
+
+  const { globalStore } = useContext(GlobalStoreContext);
   const { user } = useContext(UserContext);
+  const { setNotification } = useContext(NotificationContext);
+  
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
@@ -17,8 +28,23 @@ const Edit = () => {
     });
   }, []);
 
+  const [playerDetails, setPlayerDetails] = useState([]);
+
+  useEffect(() => {
+    Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players/${id}`)
+    .then(({ data }) => setPlayerDetails(data))
+    .catch(error => {
+      console.error(error.message);
+
+      setNotification({
+          type: "danger",
+          message: "Couldn't access the players at this time."
+      });
+    });
+  }, []);
+
   return (
-    userDetails ? (
+    userDetails && playerDetails ? (
       <>
         <Header title="Edit Player"/>
         
@@ -28,7 +54,7 @@ const Edit = () => {
           </p>
 
           <PlayerForm
-            preloadData={ userDetails }
+            preloadData={ userDetails, playerDetails }
             endpoint="/players/update"
             buttonLabel="Update Player"
           />
