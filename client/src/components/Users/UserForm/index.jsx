@@ -17,6 +17,8 @@ const UserForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
     emailConfirmation: (preloadData && preloadData.email)
   });
   const [redirect, setRedirect] = useState(false);
+
+  // console.log(inputs);
   
   const handleChange = event => {
     event.persist();

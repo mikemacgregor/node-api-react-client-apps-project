@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   const { globalStore } = useContext(GlobalStoreContext);
-  const { user, setPlayer } = useContext(UserContext);
+  const { player, setPlayer } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
 
   const [inputs, setInputs] = useState({
@@ -17,7 +17,7 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
   });
   const [redirect, setRedirect] = useState(false);
 
-  console.log(inputs);
+  // console.log(inputs);
   
   const handleChange = event => {
     event.persist();
@@ -32,15 +32,16 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
     if (inputs) {
       Axios.post(`${globalStore.REACT_APP_ENDPOINT}/players/update`, {
-        ...inputs,
-        secret_token: (user && user.token)
+        ...inputs
+        // ,
+        // secret_token: (user && user.token)
       })
       .then(({ data }) => {
         if (data && data.token) setPlayer(data);
 
         setNotification({
           type: "success",
-          message: "This action was performed successfully."
+          message: "Player updated" // could be created for a new player
         });
 
         setRedirect(true);
@@ -58,7 +59,7 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   return (
     redirect ? (
-      <Redirect to={`/players/${inputs.id}`}/>
+      <Redirect to={`/players/${inputs._id}`}/>
     ) : (
       <Form onSubmit={handleSubmit}>
         <p>
