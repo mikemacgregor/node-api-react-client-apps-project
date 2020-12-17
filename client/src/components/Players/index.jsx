@@ -1,12 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
+
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
 
-import { Row, Col, Card } from 'react-bootstrap';
+import { CardGroup } from 'react-bootstrap';
 import Header from '../shared/Header';
-
+import PlayerCard from './PlayerCard';
+import StyledButton from './styles.jsx';
 
 const Player = () => {
 
@@ -31,31 +32,15 @@ const Player = () => {
     return (
       players ? (
         <>
-            <Header title="All Our Players" children="hello">
+            <StyledButton href="/players/create" variant="primary" size="sm">Add New Player</StyledButton>
+            <Header title="All Players" children="">
 
             </Header>
-            <Row>
-                <Col>
+            <CardGroup>
                 {players.map((player, i) => (
-                    <Card key={player._id}>
-                        <div className="card-header bg-primary">
-                        <div className="text-white">
-                            Player card for {player.firstName} {player.lastName}
-                        </div>
-                        </div>
-                        <div className="card-body">
-                            {player.position} {player.team}
-                            <div>
-                            <Link to={`/players/${player._id}`}>player page</Link>
-                            </div>
-                            <div>
-                                <Link to={`/players/edit/${player._id}`}>edit player</Link>
-                            </div>
-                        </div>
-                    </Card>
+                    <PlayerCard player={player}/>
                 ))}
-                </Col>
-            </Row>
+            </CardGroup>
         </>
       ) : null
     );

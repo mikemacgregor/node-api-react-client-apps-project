@@ -17,7 +17,7 @@ const Edit = () => {
     });
   }, []);
 
-  console.log(userDetails);
+  // console.log(userDetails);
 
   return (
     userDetails ? (

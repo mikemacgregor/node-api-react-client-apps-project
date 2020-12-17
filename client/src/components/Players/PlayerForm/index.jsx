@@ -17,7 +17,7 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
   });
   const [redirect, setRedirect] = useState(false);
 
-  // console.log(inputs);
+  console.log(inputs);
   
   const handleChange = event => {
     event.persist();

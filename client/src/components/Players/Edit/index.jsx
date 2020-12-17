@@ -31,7 +31,7 @@ const Edit = () => {
     });
   }, []);
 
-  console.log(playerDetails);
+  // console.log(playerDetails);
 
   return (
     playerDetails ? (

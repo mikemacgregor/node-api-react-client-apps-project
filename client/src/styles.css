@@ -11,6 +11,11 @@ body {
     background-color: #fff;
 }
 
+h2 {
+    font-size: 1.25em;
+    color: #666;
+}
+
 footer {
     padding: 6px;
 }

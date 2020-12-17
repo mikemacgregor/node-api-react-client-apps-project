@@ -5,6 +5,7 @@ import { UserContext } from '../Authentication/UserProvider';
 import NoDice from './nodice';
 import Index from './index';
 import Show from './Show';
+import New from './New';
 import Edit from './Edit';
 
 const Routes = () => {
@@ -16,7 +17,7 @@ const Routes = () => {
           <>
             <Route exact path="/players" component={Index}/>
             <Route exact path="/players/:id" component={Show}/>
-            {/* <Route exact path="/profile" component={Show}/> */}
+            <Route exact path="/players/create" component={New}/>
             <Route exact path="/players/edit/:id" component={Edit}/>
           </>
         ) : (
