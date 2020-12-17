@@ -38,7 +38,7 @@ const Player = () => {
             </Header>
             <CardGroup>
                 {players.map((player, i) => (
-                    <PlayerCard player={player}/>
+                    <PlayerCard key={player._id} player={player}/>
                 ))}
             </CardGroup>
         </>

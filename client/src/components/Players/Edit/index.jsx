@@ -40,7 +40,7 @@ const Edit = () => {
         
         <Container>
           <p>
-            The content is editable under <strong>/src/components/Player/Edit/index.jsx</strong>
+            Edit a player comments
           </p>
 
           <PlayerForm

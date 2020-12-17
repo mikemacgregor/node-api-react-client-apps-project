@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 const PlayerCard = ({player}) => {
     
     return player ? (
-        <Card key={player._id} className="text-center">
+        <Card className="text-center">
             <Card.Body>
                 <Link to={`/players/${player._id}`}>
                     <Card.Img variant="top" src={`http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espnId}.png`} alt="player image" />

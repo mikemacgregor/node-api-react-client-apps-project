@@ -1,10 +1,12 @@
 const Player = require('../models/player');
+// const jwt = require('jsonwebtoken'); // only necessary if we are going to change the token as part of an action
 
 exports.index = async (req, res, next) => {
     try {
         const players = await Player.find();
         res.status(200).json(players);
     } catch (error) {
+        console.error(error);
         next(error);
     }
 }
@@ -33,8 +35,9 @@ exports.create = async (req, res, next) => {
           team,
           espnId
         });
-        res.status(200).json({message: 'Player added', status: 'success', player: player});
+        res.status(200).json({message: 'Player added', status: 'success', player: player });
     } catch (error) {
+        console.error(error);
         next(error);
     }
 }
@@ -50,17 +53,18 @@ exports.update = async (req, res, next) => {
             espnId
         });
 
-        res.status(200).json({ message: "Player updated", quote: qt });
+        res.status(200).json({ message: "Player updated", status: 'success', player: player });
 
     } catch (error) {
+        console.error(error);
         next(error);
     }
 };
 
 exports.destroy = async (req, res, next) => {
     try {
-      const { id } = req.body;
-      const player = await Player.findOneAndDelete({ id });
+      const { _id } = req.body;
+      const player = await Player.findOneAndDelete({ _id });
       res.status(200).json(player);
     } catch (error) {
       console.error(error);

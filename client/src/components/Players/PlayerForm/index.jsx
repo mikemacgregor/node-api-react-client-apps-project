@@ -62,10 +62,6 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
       <Redirect to={`/players/${inputs._id}`}/>
     ) : (
       <Form onSubmit={handleSubmit}>
-        <p>
-          The content is editable under <strong>/src/components/Player/PlayerForm/index.jsx</strong>
-        </p>
-
         <Form.Group>
           <Form.Label>First Name</Form.Label>
           <Form.Control
@@ -115,7 +111,6 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
             defaultValue={inputs.espnId}
           />
         </Form.Group>
-  
         <Form.Group>
           <Button type="submit">{ buttonLabel || "Add New Player" }</Button>
         </Form.Group>

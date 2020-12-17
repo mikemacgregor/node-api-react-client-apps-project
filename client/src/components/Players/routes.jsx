@@ -16,7 +16,7 @@ const Routes = () => {
         {user && user.token ? (
           <>
             <Route exact path="/players" component={Index}/>
-            <Route exact path="/players/:id" component={Show}/>
+            <Route exact path="/players/show/:id" component={Show}/>
             <Route exact path="/players/create" component={New}/>
             <Route exact path="/players/edit/:id" component={Edit}/>
           </>

@@ -1,3 +1,4 @@
+const passport = require('passport');
 const { 
     index, 
     show, 
@@ -7,10 +8,10 @@ const {
     destroy
 } = require('../controllers/players');
 
-module.exports = router => {
+module.exports = (router) => {
   router.get('/players', index);
-  router.get('/players/:id', show);
-  // router.get('/players/search', search);
+  router.get('/players/:id', show); // , passport.authenticate('jwt', { session: false })
+  // router.get('/players/search', passport.authenticate('jwt', { session: false }), search);
   router.post('/players', create);
   router.post('/players/update', update);
   router.post('/players/delete', destroy);
