@@ -1,0 +1,28 @@
+[{
+    "firstName":"Patrick",
+    "lastName":"Mahomes",
+    "position":"QB",
+    "team":"KC",
+    "espnId":"3139477"
+},
+{
+    "firstName":"Darren",
+    "lastName":"Waller",
+    "position":"TE",
+    "team":"LV",
+    "espnId":"2576925"
+},
+{
+    "firstName":"Keenan",
+    "lastName":"Allen",
+    "position":"WR",
+    "team":"LAC",
+    "espnId":"15818"
+},
+{
+    "firstName":"Saquon",
+    "lastName":"Barkley",
+    "position":"RB",
+    "team":"NYG",
+    "espnId":"3929630"
+}]

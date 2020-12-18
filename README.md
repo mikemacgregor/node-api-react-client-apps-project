@@ -1,3 +1,22 @@
+# Draft Anything App ... 
+
+## grand plans, but really only a football player admin portal at this point (Dec 18, 20)
+
+The description of the app idea is on the homepage of the client. Unfortunately, it doesn't do all of that (yet?)
+
+The app includes a resource "players" with which a logged in user can view/add/edit/delete football players.
+
+If you decide to run the app, there are some sample players in players.json. Including the espnId provides for 
+a headshot image of the player.
+
+Using the Players link from the navigation shows all players. Clicking a player image goes to an individual 
+player page. The PlayerCard component is used on both all and individual views.
+
+The draft board under Drafts in the navigation is simply a placeholder, contains a static draft board. Future 
+enhancement, each draft pick would be its own component.
+
+<hr />
+
 # Project Starter files
 
 ## Includes:
