@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
+import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 
@@ -12,12 +13,13 @@ const Player = () => {
     const { id } = useParams();
     // console.log(id);
 
+    const { user } = useContext(UserContext);
     const { globalStore } = useContext(GlobalStoreContext);
     const [player, setPlayer] = useState([]);
     const { setNotification } = useContext(NotificationContext);
 
     useEffect(() => {
-        Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players/${id}`)
+        Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players/${id}?secret_token=${user.token}`)
         .then(({ data }) => setPlayer(data))
         .catch(error => {
         console.error(error.message);

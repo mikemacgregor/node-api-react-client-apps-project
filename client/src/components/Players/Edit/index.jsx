@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
-
+import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 
@@ -14,12 +14,13 @@ const Edit = () => {
   const { id } = useParams();
   // console.log(id);
 
+  const { user } = useContext(UserContext);
   const { globalStore } = useContext(GlobalStoreContext);
   const [playerDetails, setPlayerDetails] = useState(null);
   const { setNotification } = useContext(NotificationContext);
   
   useEffect(() => {
-    Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players/${id}`)
+    Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players/${id}?secret_token=${user.token}`)
     .then(({ data }) => setPlayerDetails(data))
     .catch(error => {
       console.error(error.message);
@@ -42,7 +43,7 @@ const Edit = () => {
 
           <PlayerForm
             preloadData={ playerDetails }
-            endpoint="/players/update"
+            endpoint="players/update"
             buttonLabel="Update Player"
           />
         </Container>

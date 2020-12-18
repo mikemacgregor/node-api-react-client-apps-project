@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
-
+import { UserContext } from '../Authentication/UserProvider';
 import { GlobalStoreContext } from '../shared/Globals';
 import { NotificationContext } from '../shared/Notifications';
 
@@ -11,12 +11,13 @@ import StyledButton from './styles.jsx';
 
 const Player = () => {
 
+    const { user } = useContext(UserContext);
     const { globalStore } = useContext(GlobalStoreContext);
     const [players, setPlayers] = useState([]);
     const { setNotification } = useContext(NotificationContext);
 
     useEffect(() => {
-        Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players`)
+        Axios.get(`${globalStore.REACT_APP_ENDPOINT}/players?secret_token=${user.token}`)
         .then(({ data }) => setPlayers(data))
         .catch(error => {
         console.error(error.message);

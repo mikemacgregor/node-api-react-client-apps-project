@@ -1,12 +1,13 @@
 import React, { useState, useContext }  from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Axios from 'axios';
+import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 import { Redirect } from 'react-router-dom';
 
 const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
-
+  const { user } = useContext(UserContext);
   const { globalStore } = useContext(GlobalStoreContext);
   const { setNotification } = useContext(NotificationContext);
 
@@ -30,9 +31,8 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
     if (inputs) {
       Axios.post(`${globalStore.REACT_APP_ENDPOINT}/${endpoint}`, {
-        ...inputs
-        // ,
-        // secret_token: (user && user.token)
+        ...inputs,
+        secret_token: user.token
       })
       .then(({ data }) => {
         if (data) setInputs(data);
