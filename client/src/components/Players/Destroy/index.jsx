@@ -20,13 +20,13 @@ const Destroy = () => {
       setNotification({
         type: "success",
         message: "Player deleted"
-    });
+      });
     })
     .catch(error => {
       setNotification({
         type: "danger",
         message: `Couldn't delete the player. Error: ${error.message}`
-    });
+      });
     });
   }, []);
 
