@@ -7,6 +7,7 @@ import Index from './index';
 import Show from './Show';
 import New from './New';
 import Edit from './Edit';
+import Destroy from './Destroy';
 
 const Routes = () => {
     const { user } = useContext(UserContext);
@@ -19,6 +20,7 @@ const Routes = () => {
             <Route exact path="/players/show/:id" component={Show}/>
             <Route exact path="/players/create" component={New}/>
             <Route exact path="/players/edit/:id" component={Edit}/>
+            <Route exact path="/players/delete/:id" component={Destroy}/>
           </>
         ) : (
           <>

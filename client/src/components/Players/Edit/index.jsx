@@ -36,12 +36,9 @@ const Edit = () => {
   return (
     playerDetails ? (
       <>
-        <Header title="Edit Player"/>
+        <Header title="Edit Player" children={`${playerDetails.firstName} ${playerDetails.lastName}`} />
         
         <Container>
-          <p>
-            Edit a player comments
-          </p>
 
           <PlayerForm
             preloadData={ playerDetails }

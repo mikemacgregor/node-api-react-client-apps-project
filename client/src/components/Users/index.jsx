@@ -26,17 +26,11 @@ const Users = () => {
   return (
     users ? (
       <>
-        <Header title="Your title for the Header component block">
-          <p>
-            This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-          </p>
+        <Header title="All Users">
 
-          <p>
-            The header is editable under <strong>/src/components/Users/index.jsx</strong>
-          </p>
         </Header>
 
-        <Table className="table-responsive">
+        <Table responsive striped size="sm">
           <thead>
             <tr>
               <td>Name</td>
@@ -47,8 +41,8 @@ const Users = () => {
           <tbody>
             {users.map(({_id, name, email}, i) => (
               <tr key={_id}>
-                <td>{name}</td>
-                <td>{email}</td>
+                <td><small>{name}</small></td>
+                <td><small>{email}</small></td>
               </tr>
             ))}
           </tbody>

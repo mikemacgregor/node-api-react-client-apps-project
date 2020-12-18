@@ -24,11 +24,14 @@ const Navigation = () => {
 
   return (
     <Navbar bg="light" expand="">
-      <Navbar.Brand>Draft *Anything?* App</Navbar.Brand>
+      <Navbar.Brand>
+        <Link to="/">
+          Draft *Anything?* App
+        </Link>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/" component={NavLink}>Home</Link>
           <Link to="/drafts" component={NavLink}>Drafts</Link>
           <Link to="/players" component={NavLink}>Players</Link>
 
@@ -36,7 +39,6 @@ const Navigation = () => {
             <>
               <Link to="/users" component={NavLink}>Users</Link>
               <Link to="/profile" component={NavLink}>Profile</Link>
-              <Link to="/profile/edit" component={NavLink}>Edit Profile</Link>
               <Link to="/logout" component={NavLink}>Logout</Link>
             </>
           ) : (

@@ -1,7 +1,6 @@
 import React, { useState, useContext }  from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Axios from 'axios';
-import { UserContext } from '../../Authentication/UserProvider';
 import { GlobalStoreContext } from '../../shared/Globals';
 import { NotificationContext } from '../../shared/Notifications';
 import { Redirect } from 'react-router-dom';
@@ -9,7 +8,6 @@ import { Redirect } from 'react-router-dom';
 const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   const { globalStore } = useContext(GlobalStoreContext);
-  const { player, setPlayer } = useContext(UserContext);
   const { setNotification } = useContext(NotificationContext);
 
   const [inputs, setInputs] = useState({
@@ -31,17 +29,19 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
     event.preventDefault();
 
     if (inputs) {
-      Axios.post(`${globalStore.REACT_APP_ENDPOINT}/players/update`, {
+      Axios.post(`${globalStore.REACT_APP_ENDPOINT}/${endpoint}`, {
         ...inputs
         // ,
         // secret_token: (user && user.token)
       })
       .then(({ data }) => {
-        if (data && data.token) setPlayer(data);
-
+        if (data) setInputs(data);
+        // console.log(inputs);
+      })
+      .then(() => {
         setNotification({
           type: "success",
-          message: "Player updated" // could be created for a new player
+          message: "Player added or updated"
         });
 
         setRedirect(true);
@@ -59,7 +59,8 @@ const PlayerForm = ({ endpoint, preloadData = {}, buttonLabel }) => {
 
   return (
     redirect ? (
-      <Redirect to={`/players/${inputs._id}`}/>
+      <Redirect to="/players"/> // {`/players/${inputs._id}`} to return to specific player need to have api return the _id
+                                // which is not available for either create or update from .then({data}) => setInputs(data), above
     ) : (
       <Form onSubmit={handleSubmit}>
         <Form.Group>

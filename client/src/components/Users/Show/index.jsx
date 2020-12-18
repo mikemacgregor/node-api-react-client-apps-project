@@ -16,48 +16,41 @@ const Show = () => {
 
   useEffect(() => {
     Axios.get(`${globalStore.REACT_APP_ENDPOINT}/users/show?secret_token=${user.token}`)
-    .then(({ data }) => {
-      setUserDetails(data);
+    .then(({ data }) => setUserDetails(data))
+    .catch(error => {
+      console.error(error.message);
+
+      setNotification({
+          type: "danger",
+          message: "Could not retrieve user details"
+      });
     });
   }, []);
 
   return (
     userDetails ? (
       <>
-        <Header title="Your title for the Header component block">
-          <p>
-            This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-          </p>
+        <Header title={userDetails.name} children={`Member since ${userDetails.createdAt.substring(0,10)}`}>
 
-          <p>
-            The header is editable under <strong>/src/components/Users/Show/index.jsx</strong>
-          </p>
         </Header>
 
         <Container>
-          <p>
-            The content is editable under <strong>/src/components/Users/Show/index.jsx</strong>
-          </p>
 
           <Media>
             <img
-              src="https://via.placeholder.com/150"
-              width={150}
-              height={150}
-              className="mr-3"
+              src="https://via.placeholder.com/100"
+              width={100}
+              height={100}
+              className="mr-2"
+              alt={userDetails.name}
             />
             <Media.Body>
-              <h5>{userDetails.name}</h5>
               <p>
-                <strong>Email:</strong>&nbsp;{userDetails.email}
+                {userDetails.email}
               </p>
 
               <p>
-                <strong>Since:</strong>&nbsp;{userDetails.createdAt}
-              </p>
-
-              <p>
-                <Link to="/profile/edit">Edit profile...</Link>
+                <Link to="/profile/edit">edit profile</Link>
               </p>
             </Media.Body>
           </Media>

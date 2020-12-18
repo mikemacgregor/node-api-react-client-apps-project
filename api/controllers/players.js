@@ -45,7 +45,7 @@ exports.create = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     try {
         const { _id, firstName, lastName, position, team, espnId } = req.body;
-        const players = await Player.findOneAndUpdate( _id, {
+        const player = await Player.findOneAndUpdate( { _id: _id }, {
             firstName,
             lastName,
             position,
@@ -64,7 +64,7 @@ exports.update = async (req, res, next) => {
 exports.destroy = async (req, res, next) => {
     try {
       const { _id } = req.body;
-      const player = await Player.findOneAndDelete({ _id });
+      const player = await Player.findOneAndDelete({ _id: _id });
       res.status(200).json(player);
     } catch (error) {
       console.error(error);
