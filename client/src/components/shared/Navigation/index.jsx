@@ -23,9 +23,9 @@ const Navigation = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <Navbar bg="light" expand="">
+    <Navbar bg="primary" variant="dark" expand="">
       <Navbar.Brand>
-        <Link to="/">
+        <Link to="/" className="text-light">
           Draft *Anything?* App
         </Link>
       </Navbar.Brand>

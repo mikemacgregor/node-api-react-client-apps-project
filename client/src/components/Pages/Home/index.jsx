@@ -5,24 +5,26 @@ import Header from '../../shared/Header';
 const Home = () => {
   return (
     <>
-      <Header title="Your title for the Header component block">
-        <p>
-          This paragraph will be the value for <strong>&#123;children&#125;</strong> in the <strong>Header component</strong>.
-        </p>
-
-        <p>
-          The header is editable under <strong>/src/components/Pages/Home/index.jsx</strong>
-        </p>
+      <Header title={`Draft *Anything?*`} children={`What do you mean *Anything*?`}>
+        
       </Header>
 
       <Container>
-        <hr/>
-
         <p>
-          The content is editable under <strong>/src/components/Pages/Home/index.jsx</strong>
+          Do you know what a fantasy draft is? Fantasy football, fantasy hockey, baseball, etc.? 
+          Well, what if you could draft <em>anything</em>? Like, movies. Or better yet, 1990's action movies. 
+          Or, celebrities. Or, beer commercials. Or, breakfast cereal.
         </p>
-
-        <p>You home page content!</p>
+        <p>
+          Anything that can form a ranked list that people argue about, we can draft it. Just pick a collection, 
+          invite your over-opinionated friends, and you show them what the best cereal is or ever was.
+        </p>
+        <p>
+          It's Franken🍓Berry by the way...
+        </p>
+        <div className="text-center">
+          <img src="/frankenberry.jpg" />
+        </div>
       </Container>
     </>
   );

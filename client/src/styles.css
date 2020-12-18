@@ -5,10 +5,19 @@ body {
     max-width: 360px;
     margin: auto;
     background-color: #666;
+    font-size: 0.9em;
 }
 
 #root {
     background-color: #fff;
+}
+
+.navbar-brand a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2.25em;
 }
 
 h2 {
@@ -19,3 +28,4 @@ h2 {
 footer {
     padding: 6px;
 }
+

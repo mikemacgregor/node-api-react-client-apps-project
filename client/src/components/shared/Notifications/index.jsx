@@ -1,31 +1,25 @@
-import React, { createContext, useState } from 'react';
-import { Alert, Button, Modal } from 'react-bootstrap';
+import React, { createContext, useEffect, useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 export const NotificationContext = createContext();
 
 const NotificationProvider = ({children}) => {
   const [notification, setNotification] = useState(null);
 
-  // for the Modal to show/hide
-  const [showModal, setShowModal] = useState(true);
-
-  const handleClose = () => setShowModal(false);
+  // let's clear the notification after 2.5 seconds
+  useEffect(() => {
+    setTimeout(function(){ 
+      setNotification(null) 
+    }, 2500);
+    
+  });
 
   return (
     <NotificationContext.Provider value={{ notification, setNotification }}>
       {notification ? (
-        <Modal show={showModal} onHide={handleClose}>
-        
-          <Modal.Body>
-            <Alert variant={notification.type}>
-              {notification.message}
-              <Button variant="secondary" onClick={handleClose}>
-                x
-              </Button>
-            </Alert>
-
-          </Modal.Body>
-        </Modal>
+        <Alert className="mb-0" variant={notification.type}>
+          {notification.message}
+        </Alert>
       ) : null}
 
       {children}
