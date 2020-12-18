@@ -1,6 +1,6 @@
 # Draft Anything App ... 
 
-## grand plans, but really only a football player admin portal at this point (Dec 18, 20)
+<strong>grand plans, but really only a football player admin portal at this point (Dec 18, 20)</strong>
 
 The description of the app idea is on the homepage of the client. Unfortunately, it doesn't do all of that (yet?)
 
