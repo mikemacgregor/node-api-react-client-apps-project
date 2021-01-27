@@ -17,6 +17,10 @@ enhancement, each draft pick would be its own component.
 
 <hr />
 
+# yahoo-fantasy references
+- https://yahoo-fantasy-node-docs.vercel.app/
+- https://developer.yahoo.com/apps
+
 # Project Starter files
 
 ## Includes:
